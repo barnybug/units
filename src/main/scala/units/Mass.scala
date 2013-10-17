@@ -5,11 +5,11 @@ trait Mass {
 
   // mass
   val kg = Value(1.0, BaseUnits.mass, "kg") * value
-  val g = kg / 1000 suffix "g"
-  val pounds = Value(0.45359237, BaseUnits.mass, "lb") * value
+  val g = kg.rebase(0.001, "g")
+  val pounds = kg.rebase(0.45359237, "lb")
   val lb = pounds
   val pound = pounds
-  val stones = Value(6.35029318, BaseUnits.mass, "st") * value
+  val stones = kg.rebase(6.35029318, "st")
   val stone = stones
   val st = stones
 }

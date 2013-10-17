@@ -7,15 +7,15 @@ trait Time {
   val seconds = Value(1.0, BaseUnits.time, "s") * value
   val second = seconds
   val s = seconds
-  val minutes = seconds * 60 suffix "m"
+  val minutes = seconds.rebase(60, "m")
   val minute = minutes
-  val hours = minutes * 60 suffix "h"
+  val hours = minutes.rebase(60, "h")
   val hour = hours
-  val days = (hours * 24).suffix("days")
+  val days = hours.rebase(24, "days")
   val day = days
-  val weeks = days * 7 suffix "weeks"
+  val weeks = days.rebase(7, "weeks")
   val week = weeks
-  val years = days * 365 suffix "years"
+  val years = days.rebase(365, "years")
   // ignoring leap years
   val year = years
 }
